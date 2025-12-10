@@ -5,10 +5,14 @@ import com.flamingo.qa.api.data.UserProvider;
 import com.flamingo.qa.api.models.AuthToken;
 import com.flamingo.qa.api.tests.base.UnauthorizedApiTest;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Tag("api")
+@DisplayName("Booking Negative tests")
 public class NegativeTest extends UnauthorizedApiTest {
 
     @Test
