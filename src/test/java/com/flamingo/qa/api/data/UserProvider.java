@@ -7,4 +7,7 @@ public class UserProvider {
     public static User getUser() {
         return DefaultSettings.USER;
     }
+    public static User getInvalidUser() {
+        return new User("invalid", "user");
+    }
 }
