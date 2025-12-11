@@ -9,8 +9,8 @@ import org.junit.jupiter.api.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Tag("api")
-@DisplayName("Booking CRUD")
+@Tag("integration")
+@DisplayName("Integration")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UITests extends BaseUITest {
 
