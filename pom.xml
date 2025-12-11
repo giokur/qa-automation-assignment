@@ -20,8 +20,10 @@
         <jackson.version>2.20.1</jackson.version>
         <assertj.version>3.25.3</assertj.version>
         <selenide.version>7.12.3</selenide.version>
+        <webdrivermanager.version>6.3.3</webdrivermanager.version>
         <lombok.version>1.18.42</lombok.version>
         <allure.version>2.25.0</allure.version>
+        <allure.selenide.version>2.31.0</allure.selenide.version>
         <allure-maven.version>2.12.0</allure-maven.version>
         <maven-surefire.version>3.5.4</maven-surefire.version>
         <maven-compiler.version>3.14.1</maven-compiler.version>
@@ -72,6 +74,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
@@ -90,6 +98,12 @@
             <artifactId>allure-rest-assured</artifactId>
             <version>${allure.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-selenide</artifactId>
+            <version>${allure.selenide.version}</version>
         </dependency>
 
         <dependency>
