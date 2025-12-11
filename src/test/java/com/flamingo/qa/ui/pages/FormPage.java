@@ -1,0 +1,85 @@
+package com.flamingo.qa.ui.pages;
+
+import com.flamingo.qa.ui.config.DefaultSettings;
+import com.flamingo.qa.ui.model.Gender;
+import com.flamingo.qa.ui.model.Student;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.io.File;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
+
+public class FormPage {
+    private static final By FIRST_NAME = By.id("firstName");
+    private static final By LAST_NAME = By.id("lastName");
+    private static final By EMAIL = By.id("userEmail");
+    private static final By GENDER = By.name("gender");
+    private static final By MOBILE = By.id("userNumber");
+    private static final By PICTURE = By.id("uploadPicture");
+    private static final By SUBMIT = By.id("submit");
+
+    public FormPage enterFirstName(String name) {
+        $(FIRST_NAME).val(name);
+        return this;
+    }
+
+    public FormPage enterLastName(String name) {
+        $(LAST_NAME).val(name);
+        return this;
+    }
+
+    public FormPage enterEmail(String email) {
+        $(EMAIL).val(email);
+        return this;
+    }
+
+    public FormPage selectGender(Gender gender) {
+        WebElement radio;
+        switch (gender) {
+            case Gender.MALE:
+                radio  = $$(GENDER).get(0);
+                break;
+            case Gender.FEMALE:
+                radio  = $$(GENDER).get(1);
+                break;
+            default:
+                radio  = $$(GENDER).get(2);
+        }
+        executeJavaScript("arguments[0].click();", radio);
+        return this;
+    }
+
+    public FormPage enterMobile(String mobile) {
+        $(MOBILE).val(mobile);
+        return this;
+    }
+
+    public FormPage enterDOB(String dob) {
+        executeJavaScript("$('#dateOfBirthInput')[0].value = arguments[0]", dob);
+        return this;
+    }
+
+    public FormPage uploadPicture(String picture) {
+        File uploadFile = new File("src/test/resources/student.png");
+        $(PICTURE).uploadFile(uploadFile);
+        return this;
+    }
+
+    public void fillForm(Student student) {
+        open(DefaultSettings.FORM_URL);
+        this
+                .enterFirstName(student.getFirstName())
+                .enterLastName(student.getLastName())
+                .enterEmail(student.getEmail())
+                .selectGender(student.getGender())
+                .enterMobile(student.getUserNumber())
+                .uploadPicture(student.getPicture())
+                .enterDOB(student.getDob());
+    }
+
+    public void submit() {
+        $(SUBMIT).scrollTo().click();
+    }
+}
