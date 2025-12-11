@@ -14,7 +14,7 @@ public class StudentProvider {
         student.setGender(Gender.MALE);
         student.setUserNumber("1234567890");
         student.setDob(faker.timeAndDate().birthday(18, 22, "dd MMM yyyy"));
-        student.setPicture("picture.png");
+        student.setPicture("student.png");
         return student;
     }
 }

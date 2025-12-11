@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 
 import java.io.File;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FormPage {
@@ -62,7 +61,7 @@ public class FormPage {
     }
 
     public FormPage uploadPicture(String picture) {
-        File uploadFile = new File("src/test/resources/student.png");
+        File uploadFile = new File("src/test/resources/".concat(picture));
         $(PICTURE).uploadFile(uploadFile);
         return this;
     }
