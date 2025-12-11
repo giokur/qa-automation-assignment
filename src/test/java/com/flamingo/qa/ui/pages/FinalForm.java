@@ -3,6 +3,7 @@ package com.flamingo.qa.ui.pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.flamingo.qa.ui.model.Gender;
 import com.flamingo.qa.ui.model.Student;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -13,6 +14,7 @@ public class FinalForm {
 
     private static final By MODAL = By.id("example-modal-sizes-title-lg");
 
+    @Step
     public Student getStudent() {
         $(MODAL).shouldBe(visible);
         Student student = new Student();

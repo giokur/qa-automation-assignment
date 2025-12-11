@@ -3,6 +3,7 @@ package com.flamingo.qa.ui.pages;
 import com.flamingo.qa.ui.config.DefaultSettings;
 import com.flamingo.qa.ui.model.Gender;
 import com.flamingo.qa.ui.model.Student;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -19,21 +20,25 @@ public class FormPage {
     private static final By PICTURE = By.id("uploadPicture");
     private static final By SUBMIT = By.id("submit");
 
+    @Step
     public FormPage enterFirstName(String name) {
         $(FIRST_NAME).val(name);
         return this;
     }
 
+    @Step
     public FormPage enterLastName(String name) {
         $(LAST_NAME).val(name);
         return this;
     }
 
+    @Step
     public FormPage enterEmail(String email) {
         $(EMAIL).val(email);
         return this;
     }
 
+    @Step
     public FormPage selectGender(Gender gender) {
         WebElement radio;
         switch (gender) {
@@ -50,22 +55,26 @@ public class FormPage {
         return this;
     }
 
+    @Step
     public FormPage enterMobile(String mobile) {
         $(MOBILE).val(mobile);
         return this;
     }
 
+    @Step
     public FormPage enterDOB(String dob) {
         executeJavaScript("$('#dateOfBirthInput')[0].value = arguments[0]", dob);
         return this;
     }
 
+    @Step
     public FormPage uploadPicture(String picture) {
         File uploadFile = new File("src/test/resources/".concat(picture));
         $(PICTURE).uploadFile(uploadFile);
         return this;
     }
 
+    @Step
     public void fillForm(Student student) {
         open(DefaultSettings.FORM_URL);
         this
@@ -78,6 +87,7 @@ public class FormPage {
                 .enterDOB(student.getDob());
     }
 
+    @Step
     public void submit() {
         $(SUBMIT).scrollTo().click();
     }
