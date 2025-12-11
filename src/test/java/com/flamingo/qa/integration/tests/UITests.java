@@ -11,7 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Tag("integration")
 @DisplayName("Integration")
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UITests extends BaseUITest {
 
     @BeforeAll
