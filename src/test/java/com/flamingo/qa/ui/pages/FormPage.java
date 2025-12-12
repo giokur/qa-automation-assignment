@@ -20,7 +20,7 @@ public class FormPage {
     private static final By EMAIL = By.id("userEmail");
     private static final By GENDER = By.name("gender");
     private static final By MOBILE = By.id("userNumber");
-    private static final String DOB = "#dateOfBirth";
+    private static final By DOB = By.id("dateOfBirth");
     private static final By SUBJECTS = By.id("subjectsContainer");
     private static final By PICTURE = By.id("uploadPicture");
     private static final By STATE = By.id("state");
@@ -86,6 +86,7 @@ public class FormPage {
         return this;
     }
 
+    @Step
     public FormPage selectSubject(String subject) {
         this.subjects.select(subject);
         return this;
