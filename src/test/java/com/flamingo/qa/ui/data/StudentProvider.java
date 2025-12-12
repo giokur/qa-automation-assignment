@@ -13,8 +13,11 @@ public class StudentProvider {
         student.setEmail(faker.internet().emailAddress());
         student.setGender(Gender.MALE);
         student.setUserNumber("1234567890");
-        student.setDob(faker.timeAndDate().birthday(18, 22, "dd MMM yyyy"));
+        student.setDob(faker.timeAndDate().birthday(18, 22, "dd MMMM yyyy"));
+        student.setSubject("Economics");
         student.setPicture("student.png");
+        student.setState("Haryana");
+        student.setCity("Panipat");
         return student;
     }
 }

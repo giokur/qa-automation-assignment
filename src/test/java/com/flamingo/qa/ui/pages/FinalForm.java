@@ -34,8 +34,12 @@ public class FinalForm {
                 student.setGender(Gender.OTHER);
         }
         student.setUserNumber(cells.get(7).getText());
-        student.setDob(cells.get(9).getText());
+        student.setDob(cells.get(9).getText().replace(',', ' '));
+        student.setSubject(cells.get(11).getText());
         student.setPicture(cells.get(15).getText());
+        String[] stateCity = cells.get(19).getText().split("\\s+");
+        student.setState(stateCity[0]);
+        student.setCity(stateCity[1]);
         return student;
     }
 }
