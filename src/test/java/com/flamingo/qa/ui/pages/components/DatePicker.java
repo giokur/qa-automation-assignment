@@ -1,14 +1,14 @@
 package com.flamingo.qa.ui.pages.components;
 
-import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class DatePicker {
-    private final String container;
+    private final By container;
 
-    public DatePicker(String container) {
+    public DatePicker(By container) {
         this.container = container;
     }
 
@@ -19,13 +19,8 @@ public class DatePicker {
 
     public void selectDate(String day, String month, String year) {
         $(container).$("input").click();
-        selectOption(".react-datepicker__year-select", year);
-        selectOption(".react-datepicker__month-select", month);
-        $(container.concat(" ").concat(".react-datepicker__day--0").concat(day)).click();
-    }
-
-    private void selectOption(String css, String value) {
-        WebElement element = executeJavaScript("return document.querySelector(arguments[0].concat(' ').concat(arguments[1]))", container, css);
-        $(element).selectOption(value);
+        $(container).$(".react-datepicker__year-select").selectOption(year);
+        $(container).$(".react-datepicker__month-select").selectOption(month);
+        $(container).$(".react-datepicker__day--0".concat(day)).click();
     }
 }
