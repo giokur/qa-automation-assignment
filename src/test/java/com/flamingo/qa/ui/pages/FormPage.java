@@ -1,8 +1,5 @@
 package com.flamingo.qa.ui.pages;
 
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import com.flamingo.qa.ui.config.DefaultSettings;
 import com.flamingo.qa.ui.model.Gender;
 import com.flamingo.qa.ui.model.Student;
@@ -14,7 +11,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.io.File;
-import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 
