@@ -10,5 +10,8 @@ public class Student {
     private Gender gender;
     private String userNumber;
     private String dob;
+    private String subject;
     private String picture;
+    private String state;
+    private String city;
 }
