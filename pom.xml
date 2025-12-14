@@ -24,7 +24,7 @@
         <lombok.version>1.18.42</lombok.version>
         <allure.version>2.25.0</allure.version>
         <allure.selenide.version>2.31.0</allure.selenide.version>
-        <allure-maven.version>2.12.0</allure-maven.version>
+        <allure-maven.version>2.17.0</allure-maven.version>
         <maven-surefire.version>3.5.4</maven-surefire.version>
         <maven-compiler.version>3.14.1</maven-compiler.version>
         <aspectj.version>1.9.20.1</aspectj.version>
@@ -176,7 +176,7 @@
                 <configuration>
                     <reportVersion>${allure.version}</reportVersion>
                     <allureDownloadUrl>
-                        https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.zip
+                        https://github.com/allure-framework/allure2/releases/download/${allure-maven.version}/allure-${allure-maven.version}.zip
                     </allureDownloadUrl>
                     <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
                 </configuration>
