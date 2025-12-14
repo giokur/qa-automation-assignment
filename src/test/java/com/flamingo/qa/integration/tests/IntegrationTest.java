@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Tag("integration")
 @DisplayName("Integration")
-public class UITests extends BaseUITest {
+public class IntegrationTest extends BaseUITest {
 
     @BeforeAll
     public static void login() {
