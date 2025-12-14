@@ -10,7 +10,34 @@ permissions:
   id-token: write
 
 jobs:
-  selenium-tests:
+  api-tests:
+    if: ${{ github.event.inputs.test_type == 'api' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
+      - name: Run API tests
+        run: |
+          mvn clean test -Dgroups="api"
+
+      - name: Upload Allure results artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-api
+          path: target/allure-results
+
+  integration-tests:
+    if: ${{ github.event.inputs.test_type == 'ui' }}
     runs-on: ubuntu-latest
 
     environment:
@@ -35,40 +62,86 @@ jobs:
           java-version: 21
           cache: maven
 
-      - name: Run all tests
+      - name: Run Integration tests
         env:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           mvn clean test \
-            -Dselenide.remote=http://localhost:4444/
-
-      - name: Generate Allure Report
-        if: always()
-        run: mvn allure:report
+            -Dselenide.remote=http://localhost:4444/ \
+            -Dgroups="integration"
 
       - name: Upload Allure results artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results
+          name: allure-integration
           path: target/allure-results
 
-      - name: Upload Allure report for Pages
-        if: always()
-        uses: actions/upload-pages-artifact@v3
+  selenium-tests:
+    if: ${{ github.event.inputs.test_type == 'ui' }}
+    runs-on: ubuntu-latest
+
+    services:
+      selenium:
+        image: selenium/standalone-chrome:latest
+        ports:
+          - 4444:4444
+        options: >-
+          --shm-size="2g"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
         with:
-          path: target/site/allure-maven-plugin
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
+      - name: Run Selenium tests
+        run: |
+          mvn clean test \
+            -Dselenide.remote=http://localhost:4444/ \
+            -Dgroups="ui"
+
+      - name: Upload Allure results artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-ui
+          path: target/allure-results
 
   deploy-allure:
-    needs: selenium-tests
+    needs: [ api-tests, integration-tests, ui-tests ]
     runs-on: ubuntu-latest
+    if: always()
 
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Download Allure results
+        uses: actions/download-artifact@v4
+        with:
+          path: allure-results
+
+      - name: Merge Allure results
+        run: |
+          mkdir -p target/allure-results
+          find allure-results -type f -exec cp {} target/allure-results \;
+
+      - name: Generate Allure Report
+        run: mvn allure:report
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: target/site/allure-maven-plugin
+
       - name: Deploy Allure Report to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
