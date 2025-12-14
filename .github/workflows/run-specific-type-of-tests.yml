@@ -56,7 +56,7 @@ jobs:
           path: target/site/allure-maven-plugin
 
   integration-tests:
-    if: ${{ github.event.inputs.test_type == 'api' }}
+    if: ${{ github.event.inputs.test_type == 'integration' }}
     runs-on: ubuntu-latest
 
     steps:
