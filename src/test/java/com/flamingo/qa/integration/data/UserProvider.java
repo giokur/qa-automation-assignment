@@ -5,7 +5,12 @@ import com.flamingo.qa.integration.models.User;
 
 public class UserProvider {
     public static User getUser() {
-        return new User("giokur", "6KW!9{G2E=yT");
+        String username = System.getenv("USERNAME");
+        String password = System.getenv("PASSWORD");
+        if  (username == null || password == null) {
+            throw new RuntimeException("No USERNAME or PASSWORD env var is set");
+        }
+        return new User(username, password);
     }
 
 }

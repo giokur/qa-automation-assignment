@@ -13,6 +13,9 @@ jobs:
   selenium-tests:
     runs-on: ubuntu-latest
 
+    environment:
+      name: Test environment
+
     services:
       selenium:
         image: selenium/standalone-chrome:latest
@@ -32,7 +35,10 @@ jobs:
           java-version: 21
           cache: maven
 
-      - name: Run Selenium tests
+      - name: Run all tests
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           mvn clean test \
             -Dselenide.remote=http://localhost:4444/
