@@ -78,7 +78,7 @@ jobs:
           name: allure-integration
           path: target/allure-results
 
-  selenium-tests:
+  ui-tests:
     if: ${{ github.event.inputs.test_type == 'ui' }}
     runs-on: ubuntu-latest
 
