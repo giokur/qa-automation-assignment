@@ -154,8 +154,9 @@ jobs:
           path: target/site/allure-maven-plugin
 
   deploy-allure:
-    needs: selenium-tests
+    needs: [ api-tests, integration-tests, ui-tests ]
     runs-on: ubuntu-latest
+    if: always()
 
     environment:
       name: github-pages
