@@ -35,11 +35,9 @@ jobs:
           cache: maven
 
       - name: Run Selenium tests
-        env:
-          SELENIUM_REMOTE_URL: http://selenium:4444/wd/hub
         run: |
           mvn clean test \
-            -Dselenide.remote=$SELENIUM_REMOTE_URL
+            -Dselenide.remote=http://localhost:4444/
 
       - name: Generate Allure Report
         if: always()
