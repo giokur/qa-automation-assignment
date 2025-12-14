@@ -176,7 +176,7 @@
                 <configuration>
                     <reportVersion>${allure.version}</reportVersion>
                     <allureDownloadUrl>
-                        https://github.com/allure-framework/allure2/releases/download/${allure-maven.version}/allure-${allure-maven.version}.zip
+                        https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.zip
                     </allureDownloadUrl>
                     <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
                 </configuration>
