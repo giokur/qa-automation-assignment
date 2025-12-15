@@ -2,5 +2,5 @@
     <aspects>
        <aspect name="com.flamingo.qa.reporting.ReportAspect"/>
     </aspects>
-    <weaver options="-verbose" />
+    <!--weaver options="-verbose" /-->
 </aspectj>
