@@ -1,5 +1,6 @@
 package com.flamingo.qa.ui.pages;
 
+import com.flamingo.qa.base.BasePage;
 import com.flamingo.qa.reporting.Reportable;
 import com.flamingo.qa.ui.config.DefaultSettings;
 import com.flamingo.qa.ui.model.Gender;
