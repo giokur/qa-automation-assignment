@@ -4,14 +4,14 @@ import com.flamingo.qa.integration.data.BookProvider;
 import com.flamingo.qa.integration.data.UserProvider;
 import com.flamingo.qa.integration.pages.BookStorePage;
 import com.flamingo.qa.integration.pages.LoginPage;
-import com.flamingo.qa.integration.tests.base.BaseUITest;
+import com.flamingo.qa.integration.tests.base.BaseIntegrationTest;
 import org.junit.jupiter.api.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Tag("integration")
 @DisplayName("Integration")
-public class IntegrationTest extends BaseUITest {
+public class IntegrationTest extends BaseIntegrationTest {
 
     @BeforeAll
     public static void login() {
@@ -25,6 +25,4 @@ public class IntegrationTest extends BaseUITest {
         bookStorePage.search(BookProvider.getBookToSearch());
         assertThat(bookStorePage.isBookListed(BookProvider.getBookToSearch())).isTrue();
     }
-
-
 }
