@@ -104,6 +104,14 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-selenide</artifactId>
             <version>${allure.selenide.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-assertj</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
