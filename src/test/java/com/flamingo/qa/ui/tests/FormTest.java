@@ -6,7 +6,6 @@ import com.flamingo.qa.ui.pages.FinalForm;
 import com.flamingo.qa.ui.pages.FormPage;
 import com.flamingo.qa.ui.tests.base.BaseUITest;
 import org.junit.jupiter.api.*;
-import org.junitpioneer.jupiter.RetryingTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("Form test")
 public class FormTest extends BaseUITest {
 
-    @RetryingTest(2)
+    @Test
     public void formTest() {
         FormPage formPage = new FormPage();
         FinalForm finalForm = new FinalForm();

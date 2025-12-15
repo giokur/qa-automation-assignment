@@ -6,7 +6,6 @@ import com.flamingo.qa.integration.pages.BookStorePage;
 import com.flamingo.qa.integration.pages.LoginPage;
 import com.flamingo.qa.integration.tests.base.BaseIntegrationTest;
 import org.junit.jupiter.api.*;
-import org.junitpioneer.jupiter.RetryingTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,7 +19,7 @@ public class IntegrationTest extends BaseIntegrationTest {
         loginPage.loginAs(UserProvider.getUser());
     }
 
-    @RetryingTest(2)
+    @Test
     public void searchTest() {
         BookStorePage bookStorePage = new BookStorePage();
         bookStorePage.search(BookProvider.getBookToSearch());
