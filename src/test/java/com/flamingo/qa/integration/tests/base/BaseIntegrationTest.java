@@ -8,7 +8,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
-public class BaseUITest {
+public class BaseIntegrationTest {
 
     @RegisterExtension
     static ScreenShooterExtension screenshotEmAll =
