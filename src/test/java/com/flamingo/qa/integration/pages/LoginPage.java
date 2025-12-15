@@ -19,7 +19,7 @@ public class LoginPage {
         open(DefaultSettings.UI_URL.concat("/login"));
         $(USERNAME).val(user.getUsername());
         $(PASSWORD).val(user.getPassword());
-        $(LOGIN).click();
+        $(LOGIN).scrollTo().click();
         $(LOGOUT).shouldBe(visible);
     }
 
