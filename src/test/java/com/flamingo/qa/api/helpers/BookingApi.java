@@ -3,10 +3,11 @@ package com.flamingo.qa.api.helpers;
 import com.flamingo.qa.api.helpers.raw.BookingApiRaw;
 import com.flamingo.qa.api.models.Booking;
 import com.flamingo.qa.api.models.ExistingBooking;
+import com.flamingo.qa.reporting.Reportable;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class BookingApi {
+public class BookingApi implements Reportable {
     private final BookingApiRaw bookingApiRaw;
 
     public BookingApi(RequestSpecification requestSpecification) {

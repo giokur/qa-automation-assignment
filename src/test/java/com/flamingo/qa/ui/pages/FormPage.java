@@ -1,12 +1,12 @@
 package com.flamingo.qa.ui.pages;
 
+import com.flamingo.qa.reporting.Reportable;
 import com.flamingo.qa.ui.config.DefaultSettings;
 import com.flamingo.qa.ui.model.Gender;
 import com.flamingo.qa.ui.model.Student;
 import com.flamingo.qa.ui.pages.components.DatePicker;
 import com.flamingo.qa.ui.pages.components.DropDown;
 import com.flamingo.qa.ui.pages.components.MultiOption;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -14,7 +14,7 @@ import java.io.File;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class FormPage {
+public class FormPage extends BasePage implements Reportable {
     private static final By FIRST_NAME = By.id("firstName");
     private static final By LAST_NAME = By.id("lastName");
     private static final By EMAIL = By.id("userEmail");
@@ -39,25 +39,21 @@ public class FormPage {
         this.city = new DropDown(CITY);
     }
 
-    @Step
     public FormPage enterFirstName(String name) {
         $(FIRST_NAME).val(name);
         return this;
     }
 
-    @Step
     public FormPage enterLastName(String name) {
         $(LAST_NAME).val(name);
         return this;
     }
 
-    @Step
     public FormPage enterEmail(String email) {
         $(EMAIL).val(email);
         return this;
     }
 
-    @Step
     public FormPage selectGender(Gender gender) {
         WebElement radio;
         switch (gender) {
@@ -74,44 +70,37 @@ public class FormPage {
         return this;
     }
 
-    @Step
     public FormPage enterMobile(String mobile) {
         $(MOBILE).val(mobile);
         return this;
     }
 
-    @Step
     public FormPage enterDOB(String dob) {
         this.dob.selectDate(dob);
         return this;
     }
 
-    @Step
     public FormPage selectSubject(String subject) {
         this.subjects.select(subject);
         return this;
     }
 
-    @Step
     public FormPage uploadPicture(String picture) {
         File uploadFile = new File("src/test/resources/".concat(picture));
         $(PICTURE).uploadFile(uploadFile);
         return this;
     }
 
-    @Step
     public FormPage selectState(String state) {
         this.state.select(state);
         return this;
     }
 
-    @Step
     public FormPage selectCity(String city) {
         this.city.select(city);
         return this;
     }
 
-    @Step
     public void fillForm(Student student) {
         open(DefaultSettings.FORM_URL);
         this
@@ -126,9 +115,9 @@ public class FormPage {
             .selectState(student.getState())
             .selectCity(student.getCity())
         ;
+        this.screenshot("Form before submit");
     }
 
-    @Step
     public void submit() {
         $(SUBMIT).scrollTo().click();
     }

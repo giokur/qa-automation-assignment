@@ -3,8 +3,9 @@ package com.flamingo.qa.api.helpers;
 import com.flamingo.qa.api.helpers.raw.AuthApiRaw;
 import com.flamingo.qa.api.models.AuthToken;
 import com.flamingo.qa.api.models.User;
+import com.flamingo.qa.reporting.Reportable;
 
-public class AuthApi {
+public class AuthApi implements Reportable {
     private final AuthApiRaw authApiRaw;
 
     public AuthApi() {

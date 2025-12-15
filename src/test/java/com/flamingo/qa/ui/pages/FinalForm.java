@@ -1,22 +1,22 @@
 package com.flamingo.qa.ui.pages;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.flamingo.qa.reporting.Reportable;
 import com.flamingo.qa.ui.model.Gender;
 import com.flamingo.qa.ui.model.Student;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class FinalForm {
+public class FinalForm extends BasePage implements Reportable {
 
     private static final By MODAL = By.id("example-modal-sizes-title-lg");
 
-    @Step
     public Student getStudent() {
         $(MODAL).shouldBe(visible);
+        this.screenshot();
         Student student = new Student();
         ElementsCollection cells = $$("td");
         String[] fullName = cells.get(1).getText().split("\\s+");

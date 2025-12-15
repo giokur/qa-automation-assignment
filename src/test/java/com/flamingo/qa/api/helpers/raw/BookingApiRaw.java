@@ -2,12 +2,13 @@ package com.flamingo.qa.api.helpers.raw;
 
 import com.flamingo.qa.api.models.Booking;
 import com.flamingo.qa.api.models.ExistingBooking;
+import com.flamingo.qa.reporting.Reportable;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 
-public class BookingApiRaw {
+public class BookingApiRaw implements Reportable  {
     private final RequestSpecification spec;
 
     public BookingApiRaw(RequestSpecification requestSpecification) {
