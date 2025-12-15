@@ -22,7 +22,8 @@ public class IntegrationTest extends BaseIntegrationTest {
     @Test
     public void searchTest() {
         BookStorePage bookStorePage = new BookStorePage();
-        bookStorePage.search(BookProvider.getBookToSearch());
-        assertThat(bookStorePage.isBookListed(BookProvider.getBookToSearch())).isTrue();
+        String bookTitle = BookProvider.getBookToSearch();
+        bookStorePage.search(bookTitle);
+        assertThat(bookStorePage.isBookListed(bookTitle)).isTrue();
     }
 }
