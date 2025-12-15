@@ -107,7 +107,7 @@ jobs:
         with:
           path: target/site/allure-maven-plugin
 
-  selenium-tests:
+  ui-tests:
     if: ${{ github.event.inputs.test_type == 'ui' }}
     runs-on: ubuntu-latest
 
