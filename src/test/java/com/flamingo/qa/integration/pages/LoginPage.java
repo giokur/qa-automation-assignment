@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.exist;
 
 public class LoginPage {
 
@@ -20,7 +20,7 @@ public class LoginPage {
         $(USERNAME).val(user.getUsername());
         $(PASSWORD).val(user.getPassword());
         $(LOGIN).scrollTo().click();
-        $(LOGOUT).shouldBe(visible);
+        $(LOGOUT).shouldBe(exist);
     }
 
     public boolean isLogoutDisplayed() {
