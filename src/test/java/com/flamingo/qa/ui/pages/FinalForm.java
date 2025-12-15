@@ -1,6 +1,7 @@
 package com.flamingo.qa.ui.pages;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.flamingo.qa.base.BasePage;
 import com.flamingo.qa.reporting.Reportable;
 import com.flamingo.qa.ui.model.Gender;
 import com.flamingo.qa.ui.model.Student;

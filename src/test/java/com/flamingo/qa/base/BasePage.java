@@ -1,4 +1,4 @@
-package com.flamingo.qa.ui.pages;
+package com.flamingo.qa.base;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Allure;
